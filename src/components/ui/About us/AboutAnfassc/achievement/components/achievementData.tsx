@@ -1,0 +1,25 @@
+export const achievementsData = {
+  achievements: [
+    "Best Supporters Club in Africa",
+    "Men and Women’s Football Tournament of All-Africa Games (Rabat) August 2019",
+    "Men’s U23 Cup of Nation (Egypt) 8th to 22nd November, 2019",
+    "FIFA U17 World Cup (Peru) September 2019",
+    "CAF African Nations Cup dated 15th of June to 13th of July, 2019",
+    "FIFA Women’s World Cup dated 7th of June to 13th of July, 2019",
+    "U20 FIFA World Cup dated 23rd of May to 6th of June, 2019",
+    "Africa U17 Cup of Nations (Tanzania) 14th - 28 April, 2019",
+    "Nations Cup in South Africa 2013",
+    "Nations Cup in Angola 2010",
+    "FIFA Beach Soccer World Cup (Paraguay) 2010",
+    "South Africa World Cup 2010",
+    "Beijing Olympics 2008",
+    "Female World Cup in Canada",
+    "Egypt 2006 Nations Cup",
+    "Tunisia 2004 Nations Cup",
+    "Japan/Korean 2002 World Cup",
+    "Nigeria/Ghana 2002 Nations Cup",
+    "Mali 2000 Nations Cup",
+    "Nigeria 99",
+    "France",
+  ]
+};
