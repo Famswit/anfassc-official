@@ -61,7 +61,7 @@ export default function Footer() {
               />
             </Box>
 
-            {/* Right: Menu, Support, About Us in row on md+ */}
+            {/* Right: Menu, Support, About Us  */}
             <Box
               sx={{
                 flex: { xs: "1 1 100%", md: "1 1 70%" },

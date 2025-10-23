@@ -56,6 +56,7 @@ export default function VideoCard({
           display: "flex",
           flexDirection: "column",
           transition: "all 0.3s ease",
+          padding:'10px',
           "&:hover": {
             transform: "translateY(-4px)",
             "& .video-thumbnail": {

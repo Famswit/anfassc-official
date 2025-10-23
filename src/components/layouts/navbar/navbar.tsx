@@ -76,9 +76,10 @@ export default function Navbar() {
         backdropFilter: "blur(30px)",
         WebkitBackdropFilter: "blur(10px)",
         borderRadius: 0,
-        transition: "all 0.3s ease",
+        transition: "box-shadow 0.3s ease", // Removed transform/scale effects
         width: "100%",
         overflow: "hidden",
+        height: { xs: "60px", md: "80px" }, // ✅ Fixed height to prevent shaking
       }}
     >
       <Container maxWidth="xl" disableGutters>
@@ -132,12 +133,12 @@ export default function Navbar() {
                   <CloseIcon sx={{ fontSize: "2rem" }} />
                 ) : (
                   <MenuIcon sx={{ fontSize: "2rem" }} />
-                )}{" "}
+                )}
               </IconButton>
             </Box>
           </Box>
 
-          {/* Desktop Only */}
+          {/* Desktop NavLinks wrapper (GREEN background) */}
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
@@ -155,6 +156,7 @@ export default function Navbar() {
               overflow: "hidden",
               minWidth: "50%",
               maxWidth: "70%",
+              pointerEvents: "auto", // ✅ Ensures hover doesn't affect layout
             }}
           >
             <NavLinks onSectionClick={scrollToSection} />
@@ -175,6 +177,7 @@ export default function Navbar() {
                 right: 0,
                 borderRadius: 0,
                 mt: { xs: "60px", md: "80px" },
+                position: "fixed", // ✅ Stops background shift
               },
             }}
             MenuListProps={{

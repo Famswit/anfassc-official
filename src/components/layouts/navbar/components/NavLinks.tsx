@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import type React from "react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Box,
   Button,
@@ -12,19 +12,19 @@ import {
   Avatar,
   IconButton,
   Collapse,
-} from "@mui/material"
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import LogoutIcon from "@mui/icons-material/Logout"
-import PersonIcon from "@mui/icons-material/Person"
-import Link from "next/link"
-import { useCart } from "@/context/CartContext"
-import { useAuth } from "@/context/AuthContext"
+} from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import LogoutIcon from "@mui/icons-material/Logout";
+import PersonIcon from "@mui/icons-material/Person";
+import Link from "next/link";
+import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 
 interface NavLinksProps {
-  onSectionClick: (sectionId: string) => void
-  mobile?: boolean
+  onSectionClick: (sectionId: string) => void;
+  mobile?: boolean;
 }
 
 const pages = [
@@ -56,9 +56,9 @@ const pages = [
       { name: "Others", path: "/club/others" },
     ],
   },
-  { name: "Donation", path: "/donation" }, // 
+  { name: "Donation", path: "/donation" }, //
   { name: "Cart", path: "/cart", icon: true },
-]
+];
 
 //  cart badge
 function CartBadge({ count, color }: { count: number; color: string }) {
@@ -77,31 +77,41 @@ function CartBadge({ count, color }: { count: number; color: string }) {
     >
       <ShoppingCartIcon sx={{ fontSize: "1.4rem", color }} />
     </Badge>
-  )
+  );
 }
 
-export default function NavLinks({ onSectionClick, mobile = false }: NavLinksProps) {
-  const [anchorEl, setAnchorEl] = useState<{ [key: string]: HTMLElement | null }>({})
-  const [mobileDropdowns, setMobileDropdowns] = useState<{ [key: string]: boolean }>({})
-  const { cartCount } = useCart()
-  const { user, isAuthenticated, logout } = useAuth()
+export default function NavLinks({
+  onSectionClick,
+  mobile = false,
+}: NavLinksProps) {
+  const [anchorEl, setAnchorEl] = useState<{
+    [key: string]: HTMLElement | null;
+  }>({});
+  const [mobileDropdowns, setMobileDropdowns] = useState<{
+    [key: string]: boolean;
+  }>({});
+  const { cartCount } = useCart();
+  const { user, isAuthenticated, logout } = useAuth();
 
-  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>, pageName: string) => {
-    setAnchorEl((prev) => ({ ...prev, [pageName]: event.currentTarget }))
-  }
+  const handleMenuOpen = (
+    event: React.MouseEvent<HTMLElement>,
+    pageName: string
+  ) => {
+    setAnchorEl((prev) => ({ ...prev, [pageName]: event.currentTarget }));
+  };
 
   const handleMenuClose = (pageName: string) => {
-    setAnchorEl((prev) => ({ ...prev, [pageName]: null }))
-  }
+    setAnchorEl((prev) => ({ ...prev, [pageName]: null }));
+  };
 
   const toggleMobileDropdown = (pageName: string) => {
-    setMobileDropdowns((prev) => ({ ...prev, [pageName]: !prev[pageName] }))
-  }
+    setMobileDropdowns((prev) => ({ ...prev, [pageName]: !prev[pageName] }));
+  };
 
   const handleLogout = () => {
-    logout()
-    handleMenuClose("avatar")
-  }
+    logout();
+    handleMenuClose("avatar");
+  };
 
   const getUserInitials = (name: string) =>
     name
@@ -109,22 +119,24 @@ export default function NavLinks({ onSectionClick, mobile = false }: NavLinksPro
       .map((n) => n[0])
       .join("")
       .toUpperCase()
-      .slice(0, 2)
+      .slice(0, 2);
 
   // Mobile menu
   if (mobile) {
-    const mobilePages = pages.filter((p) => p.name !== "Cart")
+    const mobilePages = pages.filter((p) => p.name !== "Cart");
 
     return (
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "100%" }}>
+      <Box
+        sx={{ display: "flex", flexDirection: "column", gap: 1, width: "100%" }}
+      >
         {mobilePages.map((page) => (
           <Box key={page.name} sx={{ width: "100%" }}>
             <Button
               component={page.dropdown ? "button" : Link}
               href={page.dropdown ? undefined : page.path}
               onClick={() => {
-                if (page.dropdown) toggleMobileDropdown(page.name)
-                else onSectionClick(page.name)
+                if (page.dropdown) toggleMobileDropdown(page.name);
+                else onSectionClick(page.name);
               }}
               sx={{
                 fontSize: "1rem",
@@ -147,7 +159,9 @@ export default function NavLinks({ onSectionClick, mobile = false }: NavLinksPro
                 <ExpandMoreIcon
                   sx={{
                     fontSize: "1.2rem",
-                    transform: mobileDropdowns[page.name] ? "rotate(180deg)" : "rotate(0deg)",
+                    transform: mobileDropdowns[page.name]
+                      ? "rotate(180deg)"
+                      : "rotate(0deg)",
                     transition: "transform 0.3s ease",
                   }}
                 />
@@ -187,12 +201,32 @@ export default function NavLinks({ onSectionClick, mobile = false }: NavLinksPro
         ))}
 
         {isAuthenticated && user && (
-          <Box sx={{ borderTop: "1px solid rgba(255,255,255,0.2)", pt: 2, mt: 2 }}>
-            <Box sx={{ display: "flex", alignItems: "center", px: 2, py: 1, color: "white" }}>
-              <Avatar sx={{ width: 32, height: 32, bgcolor: "white", color: "green", mr: 2 }}>
+          <Box
+            sx={{ borderTop: "1px solid rgba(255,255,255,0.2)", pt: 2, mt: 2 }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                px: 2,
+                py: 1,
+                color: "white",
+              }}
+            >
+              <Avatar
+                sx={{
+                  width: 32,
+                  height: 32,
+                  bgcolor: "white",
+                  color: "green",
+                  mr: 2,
+                }}
+              >
                 {user.name ? getUserInitials(user.name) : <PersonIcon />}
               </Avatar>
-              <Box sx={{ fontSize: "0.9rem", fontWeight: 500 }}>{user.name || user.email}</Box>
+              <Box sx={{ fontSize: "0.9rem", fontWeight: 500 }}>
+                {user.name || user.email}
+              </Box>
             </Box>
             <Button
               onClick={handleLogout}
@@ -211,12 +245,20 @@ export default function NavLinks({ onSectionClick, mobile = false }: NavLinksPro
           </Box>
         )}
       </Box>
-    )
+    );
   }
 
   //  Desktop menu
   return (
-    <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 1, flex: 1, ml: 10 }}>
+    <Box
+      sx={{
+        display: { xs: "none", md: "flex" },
+        alignItems: "center",
+        gap: 1,
+        flex: 1,
+        ml: 10,
+      }}
+    >
       <AnimatePresence>
         {pages.map((page, index) => (
           <motion.div
@@ -232,7 +274,9 @@ export default function NavLinks({ onSectionClick, mobile = false }: NavLinksPro
               <Button
                 component={Link}
                 href={page.path}
-                onMouseEnter={(e) => page.dropdown && handleMenuOpen(e, page.name)}
+                onMouseEnter={(e) =>
+                  page.dropdown && handleMenuOpen(e, page.name)
+                }
                 onClick={() => !page.dropdown && onSectionClick(page.name)}
                 sx={{
                   fontSize: { sm: "0.85rem", md: "0.9rem" },
@@ -241,7 +285,8 @@ export default function NavLinks({ onSectionClick, mobile = false }: NavLinksPro
                   px: 1,
                   py: 1,
                   color: page.name === "Cart" ? "green" : "white",
-                  backgroundColor: page.name === "Cart" ? "white" : "transparent",
+                  backgroundColor:
+                    page.name === "Cart" ? "white" : "transparent",
                   display: "flex",
                   alignItems: "center",
                   position: "relative",
@@ -267,8 +312,15 @@ export default function NavLinks({ onSectionClick, mobile = false }: NavLinksPro
                 }}
               >
                 {page.name}
-                {page.icon && <CartBadge count={cartCount} color={page.name === "Cart" ? "green" : "white"} />}
-                {page.dropdown && <ArrowDropDownIcon sx={{ ml: 0.5, fontSize: "1.2rem" }} />}
+                {page.icon && (
+                  <CartBadge
+                    count={cartCount}
+                    color={page.name === "Cart" ? "green" : "white"}
+                  />
+                )}
+                {page.dropdown && (
+                  <ArrowDropDownIcon sx={{ ml: 0.5, fontSize: "1.2rem" }} />
+                )}
               </Button>
 
               {page.dropdown && (
@@ -305,9 +357,23 @@ export default function NavLinks({ onSectionClick, mobile = false }: NavLinksPro
       </AnimatePresence>
 
       {isAuthenticated && user && (
-        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}>
-          <IconButton onClick={(e) => handleMenuOpen(e, "avatar")} sx={{ ml: 2, p: 0 }}>
-            <Avatar sx={{ width: 36, height: 36, bgcolor: "white", color: "green", border: "2px solid white" }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+        >
+          <IconButton
+            onClick={(e) => handleMenuOpen(e, "avatar")}
+            sx={{ ml: 2, p: 0 }}
+          >
+            <Avatar
+              sx={{
+                width: 36,
+                height: 36,
+                bgcolor: "white",
+                color: "green",
+                border: "2px solid white",
+              }}
+            >
               {user.name ? getUserInitials(user.name) : <PersonIcon />}
             </Avatar>
           </IconButton>
@@ -324,7 +390,10 @@ export default function NavLinks({ onSectionClick, mobile = false }: NavLinksPro
             </MenuItem>
             <MenuItem
               onClick={handleLogout}
-              sx={{ color: "green", "&:hover": { backgroundColor: "rgba(0,128,0,0.1)" } }}
+              sx={{
+                color: "green",
+                "&:hover": { backgroundColor: "rgba(0,128,0,0.1)" },
+              }}
             >
               <LogoutIcon sx={{ mr: 1, fontSize: "1.1rem" }} /> Logout
             </MenuItem>
@@ -332,5 +401,5 @@ export default function NavLinks({ onSectionClick, mobile = false }: NavLinksPro
         </motion.div>
       )}
     </Box>
-  )
+  );
 }
