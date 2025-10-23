@@ -2,7 +2,7 @@ import AuthenticClubPage from '@/components/ui/Club/Academy/AuthenticClub'
 import { Box } from '@mui/material'
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
     <Box>
         <AuthenticClubPage />
@@ -10,4 +10,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

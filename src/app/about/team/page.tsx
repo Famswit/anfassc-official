@@ -2,7 +2,7 @@ import TeamMembers from '@/components/ui/About us/TeamsAndMembers/TeamMembers/Te
 import { Box } from '@mui/material'
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
     <Box>
         <TeamMembers />
@@ -10,4 +10,4 @@ const page = () => {
   )
 }
 
-export default page;
+export default Page;

@@ -1,3 +1,5 @@
+"use client"
+
 import AboutUsInfo from '@/components/ui/About us/AboutAnfassc/aboutUsInfo/aboutUsInfo'
 import AchievementsSection from '@/components/ui/About us/AboutAnfassc/achievement/Achievement'
 import HeaderSection from '@/components/ui/About us/AboutAnfassc/headerSection/HeaderSection'
@@ -5,7 +7,7 @@ import ObjectivesSection from '@/components/ui/About us/AboutAnfassc/objectives/
 import { Box } from '@mui/material'
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
     <Box>
       <HeaderSection />
@@ -16,4 +18,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

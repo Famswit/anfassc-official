@@ -1,8 +1,10 @@
+"use client"
+
 import CartPaymentPage from '@/components/ui/HomePage/shop/cartPaymentPage/cartPayment'
 import { Box } from '@mui/material'
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
     <Box>
         <CartPaymentPage />
@@ -10,4 +12,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page;
