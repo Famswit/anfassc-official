@@ -1,15 +1,13 @@
-"use client"
+// src/app/cart-payment-page/page.tsx
+"use client";
 
-import CartPaymentPage from '@/components/ui/HomePage/shop/cartPaymentPage/cartPayment'
-import { Box } from '@mui/material'
-import React from 'react'
+import React, { Suspense } from "react";
+import CartPaymentPage from "@/components/ui/HomePage/shop/cartPaymentPage/cartPayment";
 
-const Page = () => {
+export default function PageWrapper() {
   return (
-    <Box>
-        <CartPaymentPage />
-    </Box>
-  )
+    <Suspense fallback={<div>Loading checkout...</div>}>
+      <CartPaymentPage />
+    </Suspense>
+  );
 }
-
-export default Page;

@@ -1,13 +1,15 @@
-import OrderSuccessPage from '@/components/ui/OrderSuccess/OrderSuccess'
-import { Box } from '@mui/material'
-import React from 'react'
+"use client";
 
-const page = () => {
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+import OrderSuccessPage from "@/components/ui/OrderSuccess/OrderSuccess";
+import { Box } from "@mui/material";
+
+export default function Page() {
   return (
     <Box>
-        <OrderSuccessPage />
+      <OrderSuccessPage />
     </Box>
-  )
+  );
 }
-
-export default page
